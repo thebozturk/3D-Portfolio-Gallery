@@ -1,44 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="loader">
-        <div class="loader_inner"></div>
-        <p class="description"></p>
+      <div class="loader_inner"></div>
+      <p class="description"></p>
     </div>
     <div id="canvas"></div>
-    <div class="ui">
-        <div class="noise"></div>
-        <div class="vig"></div>
-        <div class="bloom"></div>
-        <div class="fullscreen">
-            <i class="fa fa-expand"></i>
-        </div>
-        <div class="logo">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/notEarthLogo.png" />
-        </div>
-        <div class="gems">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/gemsBg.png" />
-        </div>
-        <div class="friends">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/friendsBg.png" />
-        </div>
 
-        <div class="left button">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/arrowBg.png" />
-        </div>
-        <div class="right button">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/arrowBg.png" />
-        </div>
-        <!-- <div class="box">
+    <div class="home-page">
+      <div class="home-page-wrapper">
+        <div class="title"></div>
+      </div>
+    </div>
+
+    <div class="ui">
+      <div class="noise"></div>
+      <div class="vig"></div>
+      <div class="bloom"></div>
+      <div class="fullscreen">
+        <i class="fa fa-expand"></i>
+      </div>
+      <div class="logo">
+        <img
+          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/notEarthLogo.png"
+        />
+      </div>
+      <div class="gems">
+        <img
+          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/gemsBg.png"
+        />
+      </div>
+      <div class="friends">
+        <img
+          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/friendsBg.png"
+        />
+      </div>
+
+      <div class="left button">
+        <img
+          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/arrowBg.png"
+        />
+      </div>
+      <div class="right button">
+        <img
+          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/arrowBg.png"
+        />
+      </div>
+      <!-- <div class="box">
             <div class="box_inner" data-deep-animate-time=".7" data-deep-animate="false" data-deep-ui="true">
                 <div class="box_inner__title" data-depth="20">Noob loot crate</div>
                 <div class="box_inner__decal">
@@ -65,6 +81,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js"></script>
     <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
     <script src="./assets/js/main.js"></script>
-</body>
 
+    <script>
+      $(() => {
+        const words = ["no pixel", "no problem", "no panic"];
+        words.forEach((word, index) => {
+          const order = index % 3;
+          const cs = {
+            0: "can",
+            1: "will",
+            2: "thrive",
+          }[order];
+
+          const splitWord = word.split(" ");
+
+          const wordClass = $(`<div class='word ${cs}'></div>`);
+          let animationDelay = 0;
+
+          splitWord.forEach((f) => {
+            let isNo = false;
+
+            if (f.toLowerCase() == "no") isNo = true;
+
+            f.split("").forEach((letter) => {
+              const letterClass = $(`<span>${letter}</span>`).appendTo(
+                wordClass
+              );
+
+              console.log(isNo);
+
+              if (!isNo)
+                $(letterClass).css(
+                  "animation",
+                  `${cs} 6s ease-in-out both ${animationDelay / 10}s infinite`
+                );
+              animationDelay++;
+            });
+          });
+
+          $(".title").append(wordClass);
+        });
+      });
+    </script>
+  </body>
 </html>
