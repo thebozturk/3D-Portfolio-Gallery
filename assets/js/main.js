@@ -93,6 +93,168 @@ slide.volume = 0.2; // Slide transition sound volume
 string = "3%ferf$£%UY5£$&&^&jtgjHYJg";
 slidePlayDelay = 500; // Delay from click until slide is played
 
+const myObject = [
+  {
+    name: "candy-machine-mint",
+    description:
+      "Fork, config, customize and ship your own candy machine mint app on your own domain, ultra fast.",
+    homepage: "candy-machine-mint-ochre.vercel.app",
+    starCount: 0,
+    url: "https://api.github.com/repos/tolgaand/candy-machine-mint",
+    languages: {
+      TypeScript: 18452,
+      HTML: 1721,
+      CSS: 443,
+      Shell: 274,
+    },
+  },
+  {
+    name: "casper-blog",
+    description: null,
+    homepage: "https://casper-blog-tolgaand.vercel.app",
+    starCount: 0,
+    url: "https://api.github.com/repos/tolgaand/casper-blog",
+    languages: {
+      Vue: 12358,
+      JavaScript: 1470,
+      HTML: 611,
+    },
+  },
+  {
+    name: "devchat",
+    description: null,
+    homepage: null,
+    starCount: 1,
+    url: "https://api.github.com/repos/tolgaand/devchat",
+    languages: {
+      Vue: 6283,
+      JavaScript: 4387,
+      SCSS: 288,
+    },
+  },
+  {
+    name: "movie-api",
+    description: "Node.js - Movie API",
+    homepage: null,
+    starCount: 1,
+    url: "https://api.github.com/repos/tolgaand/movie-api",
+    languages: {
+      JavaScript: 4421,
+      HTML: 275,
+      CSS: 111,
+    },
+  },
+  {
+    name: "nestjs-googleoauth2-example",
+    description: null,
+    homepage: "https://googleoauth2-example.herokuapp.com/auth/google",
+    starCount: 2,
+    url: "https://api.github.com/repos/tolgaand/nestjs-googleoauth2-example",
+    languages: {
+      TypeScript: 7187,
+      JavaScript: 631,
+    },
+  },
+  {
+    name: "notion-video-schedule",
+    description:
+      "Website developed with express and notion to show scheduled videos",
+    homepage: "https://notion-video-schedule.herokuapp.com",
+    starCount: 0,
+    url: "https://api.github.com/repos/tolgaand/notion-video-schedule",
+    languages: {
+      JavaScript: 2314,
+      HTML: 1433,
+      CSS: 867,
+    },
+  },
+  {
+    name: "passgen-cli",
+    description: "This is password generator CLI project.",
+    homepage: null,
+    starCount: 2,
+    url: "https://api.github.com/repos/tolgaand/passgen-cli",
+    languages: {
+      JavaScript: 1960,
+    },
+  },
+  {
+    name: "quovote",
+    description: null,
+    homepage: "https://quo.vote",
+    starCount: 0,
+    url: "https://api.github.com/repos/tolgaand/quovote",
+    languages: {
+      Vue: 38005,
+      JavaScript: 32154,
+      Dockerfile: 1212,
+      HTML: 570,
+    },
+  },
+  {
+    name: "to-do-list",
+    description: " To-do list application developed with Vuejs",
+    homepage: "https://to-do-list-product.vercel.app",
+    starCount: 0,
+    url: "https://api.github.com/repos/tolgaand/to-do-list",
+    languages: {
+      Vue: 14976,
+      JavaScript: 6868,
+      HTML: 611,
+    },
+  },
+  {
+    name: "tolgaand",
+    description: "tolgacaglayan.xyz",
+    homepage: null,
+    starCount: 1,
+    url: "https://api.github.com/repos/tolgaand/tolgaand",
+    languages: {},
+  },
+  {
+    name: "tolgaand.github.io",
+    description: "This is my personel website.",
+    homepage: "https://tolgaand.github.io",
+    starCount: 0,
+    url: "https://api.github.com/repos/tolgaand/tolgaand.github.io",
+    languages: {
+      HTML: 14054,
+      JavaScript: 3220,
+      CSS: 1064,
+    },
+  },
+  {
+    name: "Tutorial",
+    description: null,
+    homepage: null,
+    starCount: 0,
+    url: "https://api.github.com/repos/tolgaand/Tutorial",
+    languages: {},
+  },
+  {
+    name: "twitter-clone",
+    description: null,
+    homepage: "https://twitter-clone-tolgaand.vercel.app",
+    starCount: 0,
+    url: "https://api.github.com/repos/tolgaand/twitter-clone",
+    languages: {},
+  },
+  {
+    name: "vue-covid-tracker",
+    description:
+      "A web application that provides information on Corona virus numbers",
+    homepage: null,
+    starCount: 0,
+    url: "https://api.github.com/repos/tolgaand/vue-covid-tracker",
+    languages: {
+      Vue: 2927,
+      JavaScript: 1113,
+      HTML: 611,
+      CSS: 61,
+    },
+  },
+];
+
 // ## Create a function to play our sounds
 function playSound(sound) {
   if (audio) {
@@ -110,7 +272,6 @@ function loading(text, percent, done) {
   if (done) {
     $(".loader").fadeOut(); // Fade loader out
     setTimeout(function () {
-      //   $("#canvas,.ui").fadeIn(); // Fade in our scene
       playSound(bg); // Play background music
       playSound(bgEffect); // Play background effects
 
@@ -136,6 +297,8 @@ THREE.DefaultLoadingManager.onProgress = function (item, loaded, total) {
   loading("Schema is loading", percent, isLoaded);
 };
 
+function dynamicLanguage() {}
+
 function startScene() {
   // ## Set up the canvas
   var canvasWidth = window.innerWidth,
@@ -153,7 +316,16 @@ function startScene() {
   ); // Create an ambient light source
   scene.add(ambientLight); // Now add the light to our scene
 
-  for (i = 0; i < 4; i++) {
+  // ## Let"s create a constructor for our meshes
+  object = function () {
+    THREE.Mesh.apply(this, arguments);
+  };
+
+  object.prototype = Object.create(THREE.Mesh.prototype);
+  object.prototype.constructor = object;
+  object.verticesNeedUpdate = true; // Needed to update anchor points
+
+  for (i = 0; i < myObject.length; i++) {
     l = new THREE.PointLight(spotLightColor, 20, 10, 4, spotLightIntensity); // Create a PointLight
     l.position.set(5, 4, -i * crateOffset); // Position this light
     l.castShadow = true;
@@ -190,15 +362,6 @@ function startScene() {
   // ## Orbital controls
   cameraControls = new THREE.OrbitControls(camera, renderer.domElement);
 
-  // ## Let"s create a constructor for our meshes
-  object = function () {
-    THREE.Mesh.apply(this, arguments);
-  };
-
-  object.prototype = Object.create(THREE.Mesh.prototype);
-  object.prototype.constructor = object;
-  object.verticesNeedUpdate = true; // Needed to update anchor points
-
   // ## Load in our textures
   THREE.ImageUtils.crossOrigin = "";
 
@@ -229,18 +392,6 @@ function startScene() {
   );
 
   // Crate textures
-  crateTexture = THREE.ImageUtils.loadTexture(
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/create4texture.png"
-  );
-  crateTexture2 = THREE.ImageUtils.loadTexture(
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/crate2.png"
-  );
-  crateTexture3 = THREE.ImageUtils.loadTexture(
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/crate5.jpg"
-  );
-  crateTexture4 = THREE.ImageUtils.loadTexture(
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/crate3.jpg"
-  );
 
   // ## Create our materials
   smokeMaterial = new THREE.MeshPhongMaterial({
@@ -250,6 +401,58 @@ function startScene() {
     transparent: true,
     opacity: 0,
   });
+
+  const repository = myObject.filter(
+    (obj) => Object.keys(obj.languages).length
+  );
+
+  repository.forEach((object) => {
+    const keys = Object.keys(object.languages);
+    let maxLanguage =
+      keys.reduce(function (a, b) {
+        return object.languages[a] > object.languages[b] ? a : b;
+      }) || object.languages[keys[0]];
+
+    const texture = THREE.ImageUtils.loadTexture(
+      `/assets/textures/${maxLanguage.toLowerCase()}.png`
+    );
+    const languageMaterial = new THREE.MeshPhongMaterial({
+      // Crate
+      shading: THREE.SmoothShading,
+      map: texture,
+    });
+
+    // ## Let"s create a constructor for our meshes
+    object = function () {
+      THREE.Mesh.apply(this, arguments);
+    };
+
+    object.prototype = Object.create(THREE.Mesh.prototype);
+    object.prototype.constructor = object;
+    object.verticesNeedUpdate = true; // Needed to update anchor points
+
+    const languageGeo = new THREE.BoxGeometry(2, 2, 2, 1, 1, 1);
+    const languageGeoObject = new object(languageGeo, languageMaterial);
+
+    // ## Make smoke geometry
+    var smokeGeo = new THREE.BoxGeometry(1, 1, 1, 1, 1, 1);
+
+    languageGeoObject.geometry.translate(0, 1, 1); // 0, 1, 1
+    languageGeoObject.position.set(0, 0, -i * crateOffset + sceneOffset);
+    languageGeoObject.castShadow = true; // Make crate cast shadows
+    for (a = 0; a < smokeAmount; a++) {
+      s = new object(smokeGeo, smokeMaterial);
+      num = Math.random() * -2 + 1;
+      s.position.set(num, -0.35, 0);
+      s.scale.set(0.3, 0.3, 0.3);
+      makeSmoke(s);
+      languageGeoObject.add(s);
+    }
+    scene.add(languageGeoObject); // Add them all to our scene
+  });
+
+  console.log(repository);
+
   particleMaterial = new THREE.MeshPhongMaterial({
     // Particles
     shading: THREE.SmoothShading,
@@ -276,26 +479,26 @@ function startScene() {
     map: grassTexture,
     shininess: 0,
   });
-  crateMaterial = new THREE.MeshPhongMaterial({
-    // Crate
-    shading: THREE.SmoothShading,
-    map: crateTexture,
-  });
-  crateMaterial2 = new THREE.MeshPhongMaterial({
-    // Crate
-    shading: THREE.SmoothShading,
-    map: crateTexture2,
-  });
-  crateMaterial3 = new THREE.MeshPhongMaterial({
-    // Crate
-    shading: THREE.SmoothShading,
-    map: crateTexture3,
-  });
-  crateMaterial4 = new THREE.MeshPhongMaterial({
-    // Crate
-    shading: THREE.SmoothShading,
-    map: crateTexture4,
-  });
+  //   crateMaterial = new THREE.MeshPhongMaterial({
+  //     // Crate
+  //     shading: THREE.SmoothShading,
+  //     map: crateTexture,
+  //   });
+  //   crateMaterial2 = new THREE.MeshPhongMaterial({
+  //     // Crate
+  //     shading: THREE.SmoothShading,
+  //     map: crateTexture2,
+  //   });
+  //   crateMaterial3 = new THREE.MeshPhongMaterial({
+  //     // Crate
+  //     shading: THREE.SmoothShading,
+  //     map: crateTexture3,
+  //   });
+  //   crateMaterial4 = new THREE.MeshPhongMaterial({
+  //     // Crate
+  //     shading: THREE.SmoothShading,
+  //     map: crateTexture4,
+  //   });
 
   // ## Check if wireframe
   if (wireframe) {
@@ -338,39 +541,6 @@ function startScene() {
   scene.add(forest);
 
   // ## Create geometries for each crate
-  var crateOneGeo = new THREE.BoxGeometry(2, 2, 2, 1, 1, 1);
-  var crateTwoGeo = new THREE.BoxGeometry(2, 2, 2, 1, 1, 1);
-  var crateThreeGeo = new THREE.BoxGeometry(2, 2, 2, 1, 1, 1);
-  var crateFourGeo = new THREE.BoxGeometry(2, 2, 2, 1, 1, 1);
-
-  // ## Create meshes using our constructor
-  var crateOne = new object(crateOneGeo, crateMaterial);
-  var crateTwo = new object(crateTwoGeo, crateMaterial2);
-  var crateThree = new object(crateThreeGeo, crateMaterial3);
-  var crateFour = new object(crateFourGeo, crateMaterial4);
-
-  // ## Lets create an array store all our crates
-  crates = [];
-  crates.push(crateOne, crateTwo, crateThree, crateFour); // Push objects to array
-
-  // ## Make smoke geometry
-  var smokeGeo = new THREE.BoxGeometry(1, 1, 1, 1, 1, 1);
-
-  // ## Loop over our crates and add them into the scene
-  for (i = 0; i < crates.length; i++) {
-    crates[i].geometry.translate(0, 1, 1); // 0, 1, 1
-    crates[i].position.set(0, 0, -i * crateOffset + sceneOffset);
-    crates[i].castShadow = true; // Make crate cast shadows
-    for (a = 0; a < smokeAmount; a++) {
-      s = new object(smokeGeo, smokeMaterial);
-      num = Math.random() * -2 + 1;
-      s.position.set(num, -0.35, 0);
-      s.scale.set(0.3, 0.3, 0.3);
-      makeSmoke(s);
-      crates[i].add(s);
-    }
-    // scene.add(crates[i]); // Add them all to our scene
-  }
 
   var light = new THREE.PointLight(0xffffff, 1, 0);
 
@@ -541,7 +711,7 @@ function animateScene() {
 // ## Start everything up!
 
 async function threeJsInit() {
-  // await getGithubInformation();
+  //   await getGithubInformation();
   startScene();
   animateScene();
 }
@@ -714,11 +884,15 @@ async function getGithubInformation() {
     const repository = response[i];
     const repositoryObject = {};
 
+    console.log();
+
     loading(`Analyze ${repository.name} repository`, i + 5, false);
 
     repositoryObject["name"] = repository.name;
     repositoryObject["description"] = repository.description;
     repositoryObject["homepage"] = repository.homepage;
+    repositoryObject["starCount"] = repository.stargazers_count;
+    repositoryObject["url"] = repository.url;
     repositoryObject["languages"] = {};
 
     // ## Get Language
@@ -740,3 +914,8 @@ async function getGithubInformation() {
 
   loading("OK github informations.", 10, false);
 }
+
+$(".play-button").click(() => {
+  $(".home-page").fadeOut();
+  $("#canvas,.ui").fadeIn(); // Fade in our scene
+});
