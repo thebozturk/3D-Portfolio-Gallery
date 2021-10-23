@@ -1,0 +1,299 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,400");
+body {
+    background: black;
+    height: 100vh;
+    margin: 0;
+    font-weight: 200;
+    overflow: hidden;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+* {
+    -webkit-user-select: none;
+    /* Chrome all / Safari all */
+    -moz-user-select: none;
+    /* Firefox all */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
+    /* Likely future */
+}
+
+#canvas {
+    pointer-events: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.vig,
+.noise,
+.bloom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.vig {
+    background: -webkit-radial-gradient( center, ellipse cover, transparent 0%, rgba(0, 0, 0, 0.29) 100%);
+}
+
+.noise {
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/noiseOverlay.png");
+}
+
+.bloom {
+    background: #7d0a3e;
+    opacity: 0.1;
+}
+
+.logo {
+    position: absolute;
+    left: 70px;
+    top: 70px;
+    z-index: 2;
+}
+
+.logo img {
+    width: 220px;
+}
+
+.logo .spinner {
+    position: absolute;
+    left: 22px;
+    top: 19px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.95);
+    height: 31px;
+    -webkit-animation: spin 20s linear infinite;
+    animation: spin 20s linear infinite;
+    transform-origin: 1px 4px;
+    border-radius: 100px;
+}
+
+.gems {
+    position: absolute;
+    right: 70px;
+    top: 70px;
+    z-index: 2;
+}
+
+.gems img {
+    width: 140px;
+}
+
+.friends {
+    position: absolute;
+    right: 70px;
+    bottom: 70px;
+    z-index: 2;
+}
+
+.friends img {
+    width: 180px;
+}
+
+.fullscreen {
+    position: absolute;
+    z-index: 10;
+    color: white;
+    top: 72px;
+    right: 240px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.2s;
+}
+
+.fullscreen:hover {
+    opacity: 1;
+}
+
+.follow {
+    position: absolute;
+    left: 50px;
+    bottom: 40px;
+    z-index: 3;
+}
+
+.follow img {
+    width: 300px;
+}
+
+.loader {
+    width: 500px;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+}
+
+.loader_inner {
+    background: #913b92;
+    width: 0%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+}
+
+#canvas {
+    display: none;
+    width: 600px;
+    height: 600px;
+    float: left;
+}
+
+.ui {
+    display: none;
+}
+
+.left.button,
+.right.button {
+    position: absolute;
+    z-index: 20;
+    font-size: 30px;
+    top: 50%;
+    color: white;
+    transform: translateY(-50%);
+    opacity: 0.7;
+    transition: all 0.2s;
+}
+
+.left.button:hover,
+.right.button:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.left.button img,
+.right.button img {
+    width: 30px;
+}
+
+.right.button {
+    right: 70px;
+    transform: rotate(180deg);
+    transform-origin: 15px 0px;
+}
+
+.left.button {
+    left: 70px;
+}
+
+@-webkit-keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.box {
+    position: absolute;
+    z-index: 3;
+    width: 400px;
+    left: 350px;
+    right: 0;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/scifiBg.png");
+    background-size: 100px;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+.box_inner {
+    padding: 50px 0px 50px 100px;
+}
+
+.box_inner__title {
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    font-size: 26px;
+}
+
+.box_inner__decal img {
+    position: absolute;
+    left: 83px;
+    width: 210px;
+    top: 73px;
+}
+
+.box_inner__text {
+    color: white;
+    opacity: 0.6;
+    line-height: 23px;
+    margin-top: -13px;
+    font-size: 12px;
+}
+
+.box_inner__cost {
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.box_inner__cost .left {
+    float: left;
+    width: 20%;
+    top: 9px;
+    color: #31e2c8;
+    position: relative;
+    font-size: 24px;
+}
+
+.box_inner__cost .right {
+    font-size: 36px;
+    color: white;
+    font-weight: 400;
+}
+
+.box_inner__cta {
+    background: -webkit-linear-gradient( top, #ffa970 0%, #e8850a 40%, #ef750c 100%);
+    text-align: center;
+    padding: 26px 0px;
+    cursor: pointer;
+    text-shadow: 0px 2px #94632f;
+    font-weight: 400;
+    width: 230px;
+    color: white;
+    transition: all 0.2s;
+    font-size: 13px;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 20px rgba(255, 165, 0, 0.31);
+    border-radius: 3px;
+}
+
+.box_inner__cta:hover {
+    box-shadow: 0px 0px 30px rgba(255, 165, 0, 0.61);
+}
+
+.box_inner__cta span {
+    width: 100%;
+    left: 0;
+    top: 10px;
+    position: absolute;
+}
