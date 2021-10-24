@@ -15,3 +15,6 @@ Ek olarak `https://3-d-portfolio-gallery.vercel.app/{yourGithubUsername}` yapars
 <li><a href="https://github.com/thebozturk" target="_blank">Buğrahan Öztürk</a></li>
 <li><a href="https://github.com/mavisalli" target="_blank">Mavi Barış Sallı</a></li>
 <li><a href="https://github.com/tolgaand" target="_blank">Tolga Çağlayan</a></li>
+
+<h2>Kaynakça</h2>
+<a href="https://codepen.io/jcoulterdesign/pen/ryzvqG" target="_blank">https://codepen.io/jcoulterdesign/pen/ryzvqG</a>
