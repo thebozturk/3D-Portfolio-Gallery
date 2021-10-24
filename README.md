@@ -1,6 +1,6 @@
 <h1>Hakkında</h1>
 <p>2021 Patika - Codejam Yarışması kapsamında geliştirilmiş, kişisel portfolio web sitesi.<p>
-<p><a href="https://github.com/thebozturk/3D-Portfolio-Gallery" target="_blank">Buraya</a> tıklayarak demoya gidebilirsiniz.</p>
+<p><a href="https://3-d-portfolio-gallery.vercel.app/" target="_blank">Buraya</a> tıklayarak demoya gidebilirsiniz.</p>
 
 
 <h2>Kullanılan Diller</h2>
