@@ -551,13 +551,13 @@ body {
     width: 4px;
     transform: rotateZ(15deg);
     left: -267px;
-    top: -128px;
+    top: -100px;
 }
 
 .y::after {
     transform: rotateZ(-15deg);
     left: -400px;
-    top: -165px;
+    top: -100px;
     height: 266px;
 }
 
@@ -568,7 +568,7 @@ body {
     /* height: 372px; */
     /* width: 4px; */
     left: -250px;
-    top: -188px;
+    top: -160px;
     font-size: 30px;
     padding: 10px 20px;
     border: 4px solid white;
@@ -578,7 +578,7 @@ body {
 
 .y::before {
     left: -622px;
-    top: -224px;
+    top: -158px;
     width: 144px;
 }
 
