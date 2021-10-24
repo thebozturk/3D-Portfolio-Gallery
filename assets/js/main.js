@@ -400,8 +400,8 @@ function startScene() {
         opacity: 0,
     });
 
-    myObject = myObject.filter((obj) => Object.keys(obj.languages).length);
-    myObject.splice(8, myObject.length - 8);
+    // myObject = myObject.filter((obj) => Object.keys(obj.languages).length);
+    // myObject.splice(8, myObject.length - 8);
 
     myObject.forEach((item, i) => {
         const keys = Object.keys(item.languages);
@@ -676,6 +676,7 @@ async function threeJsInit() {
         startScene();
         animateScene();
     } catch (error) {
+        throw error;
         loading(error.message, 0, false);
     }
 }
@@ -845,7 +846,7 @@ async function getGithubInformation(username) {
 
     if (response.message) throw response;
 
-    const length = response.length > 9 ? 9 : length;
+    const length = response.length > 9 ? 9 : response.length;
 
     for (let i = 0; i < length; i++) {
         const repository = response[i];
