@@ -668,11 +668,14 @@ async function threeJsInit() {
         const urlParams = new URLSearchParams(window.location.search);
         const username = urlParams.get("username");
         if (username) await getGithubInformation(username);
-        else myObject = fixRepository;
+        else {
+            $(".username").text("tolgaand");
+            myObject = fixRepository;
+            loading(null, 100, true);
+        }
         startScene();
         animateScene();
     } catch (error) {
-        console.log(error);
         loading(error.message, 0, false);
     }
 }
@@ -840,7 +843,7 @@ async function getGithubInformation(username) {
         await fetch(`https://api.github.com/users/${username}/repos`)
     ).json();
 
-    if (!response.name) throw response;
+    if (response.message) throw response;
 
     for (let i = 0; i < response.length; i++) {
         const repository = response[i];
