@@ -547,18 +547,18 @@ body {
     content: "";
     position: absolute;
     background: white;
-    height: 372px;
+    height: 220px;
     width: 4px;
     transform: rotateZ(15deg);
-    left: -300px;
-    top: -213px;
+    left: -267px;
+    top: -128px;
 }
 
 .y::after {
     transform: rotateZ(-15deg);
     left: -400px;
-    top: -250px;
-    height: 410px;
+    top: -165px;
+    height: 266px;
 }
 
 .feature::before {
@@ -568,7 +568,7 @@ body {
     /* height: 372px; */
     /* width: 4px; */
     left: -250px;
-    top: -270px;
+    top: -188px;
     font-size: 30px;
     padding: 10px 20px;
     border: 4px solid white;
@@ -577,8 +577,8 @@ body {
 }
 
 .y::before {
-    left: -640px;
-    top: -310px;
+    left: -622px;
+    top: -224px;
     width: 144px;
 }
 
