@@ -2,7 +2,7 @@
 <p>2021 Patika - Codejam Yarışması kapsamında geliştirilmiş, kişisel portfolio web sitesi.<p>
 <p><a href="https://3-d-portfolio-gallery.vercel.app/" target="_blank">Buraya</a> tıklayarak demoya gidebilirsiniz.</p>
 
-Ek olarak `https://3-d-portfolio-gallery.vercel.app/{yourGithubUsername}"` yaparsanız, dimaik olarak kendi repositorylerini listeleyebilirsiniz.
+Ek olarak `https://3-d-portfolio-gallery.vercel.app/{yourGithubUsername}` yaparsanız, dimaik olarak kendi repositorylerini listeleyebilirsiniz.
 
 <h2>Kullanılan Diller</h2>
 <li>Javascript</li>
