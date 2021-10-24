@@ -2,6 +2,164 @@
 // ## Author: Jamie Coulter
 // ## Date: 10/03/2017
 
+const fixRepository = [{
+        name: "candy-machine-mint",
+        description: "Fork, config, customize and ship your own candy machine mint app on your own domain, ultra fast.",
+        homepage: "candy-machine-mint-ochre.vercel.app",
+        starCount: 0,
+        url: "https://api.github.com/repos/tolgaand/candy-machine-mint",
+        languages: {
+            TypeScript: 18452,
+            HTML: 1721,
+            CSS: 443,
+            Shell: 274,
+        },
+    },
+    {
+        name: "casper-blog",
+        description: null,
+        homepage: "https://casper-blog-tolgaand.vercel.app",
+        starCount: 0,
+        url: "https://api.github.com/repos/tolgaand/casper-blog",
+        languages: {
+            Vue: 12358,
+            JavaScript: 1470,
+            HTML: 611,
+        },
+    },
+    {
+        name: "devchat",
+        description: null,
+        homepage: null,
+        starCount: 1,
+        url: "https://api.github.com/repos/tolgaand/devchat",
+        languages: {
+            Vue: 6283,
+            JavaScript: 4387,
+            SCSS: 288,
+        },
+    },
+    {
+        name: "movie-api",
+        description: "Node.js - Movie API",
+        homepage: null,
+        starCount: 1,
+        url: "https://api.github.com/repos/tolgaand/movie-api",
+        languages: {
+            JavaScript: 4421,
+            HTML: 275,
+            CSS: 111,
+        },
+    },
+    {
+        name: "nestjs-googleoauth2-example",
+        description: null,
+        homepage: "https://googleoauth2-example.herokuapp.com/auth/google",
+        starCount: 2,
+        url: "https://api.github.com/repos/tolgaand/nestjs-googleoauth2-example",
+        languages: {
+            TypeScript: 7187,
+            JavaScript: 631,
+        },
+    },
+    {
+        name: "notion-video-schedule",
+        description: "Website developed with express and notion to show scheduled videos",
+        homepage: "https://notion-video-schedule.herokuapp.com",
+        starCount: 0,
+        url: "https://api.github.com/repos/tolgaand/notion-video-schedule",
+        languages: {
+            JavaScript: 2314,
+            HTML: 1433,
+            CSS: 867,
+        },
+    },
+    {
+        name: "passgen-cli",
+        description: "This is password generator CLI project.",
+        homepage: null,
+        starCount: 2,
+        url: "https://api.github.com/repos/tolgaand/passgen-cli",
+        languages: {
+            JavaScript: 1960,
+        },
+    },
+    {
+        name: "quovote",
+        description: null,
+        homepage: "https://quo.vote",
+        starCount: 0,
+        url: "https://api.github.com/repos/tolgaand/quovote",
+        languages: {
+            Vue: 38005,
+            JavaScript: 32154,
+            Dockerfile: 1212,
+            HTML: 570,
+        },
+    },
+    {
+        name: "to-do-list",
+        description: " To-do list application developed with Vuejs",
+        homepage: "https://to-do-list-product.vercel.app",
+        starCount: 0,
+        url: "https://api.github.com/repos/tolgaand/to-do-list",
+        languages: {
+            Vue: 14976,
+            JavaScript: 6868,
+            HTML: 611,
+        },
+    },
+    {
+        name: "tolgaand",
+        description: "tolgacaglayan.xyz",
+        homepage: null,
+        starCount: 1,
+        url: "https://api.github.com/repos/tolgaand/tolgaand",
+        languages: {},
+    },
+    {
+        name: "tolgaand.github.io",
+        description: "This is my personel website.",
+        homepage: "https://tolgaand.github.io",
+        starCount: 0,
+        url: "https://api.github.com/repos/tolgaand/tolgaand.github.io",
+        languages: {
+            HTML: 14054,
+            JavaScript: 3220,
+            CSS: 1064,
+        },
+    },
+    {
+        name: "Tutorial",
+        description: null,
+        homepage: null,
+        starCount: 0,
+        url: "https://api.github.com/repos/tolgaand/Tutorial",
+        languages: {},
+    },
+    {
+        name: "twitter-clone",
+        description: null,
+        homepage: "https://twitter-clone-tolgaand.vercel.app",
+        starCount: 0,
+        url: "https://api.github.com/repos/tolgaand/twitter-clone",
+        languages: {},
+    },
+    {
+        name: "vue-covid-tracker",
+        description: "A web application that provides information on Corona virus numbers",
+        homepage: null,
+        starCount: 0,
+        url: "https://api.github.com/repos/tolgaand/vue-covid-tracker",
+        languages: {
+            Vue: 2927,
+            JavaScript: 1113,
+            HTML: 611,
+            CSS: 61,
+        },
+    },
+];
+
 // ## Let"s get everything set up
 var scene,
     camera,
@@ -508,12 +666,14 @@ function animateScene() {
 async function threeJsInit() {
     try {
         const urlParams = new URLSearchParams(window.location.search);
-        const username = urlParams.get("username") || "tolgaand";
-        await getGithubInformation(username);
+        const username = urlParams.get("username");
+        if (username) await getGithubInformation(username);
+        else myObject = fixRepository;
         startScene();
         animateScene();
     } catch (error) {
-        loading(error.message, 100, false);
+        console.log(error);
+        loading(error.message, 0, false);
     }
 }
 
@@ -676,10 +836,11 @@ async function getGithubInformation(username) {
     $(".username").text(username);
 
     loading("Get github informations.", null, false);
-
     const response = await (
         await fetch(`https://api.github.com/users/${username}/repos`)
     ).json();
+
+    if (!response.name) throw response;
 
     for (let i = 0; i < response.length; i++) {
         const repository = response[i];
