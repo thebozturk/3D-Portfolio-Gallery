@@ -400,8 +400,8 @@ function startScene() {
         opacity: 0,
     });
 
-    // myObject = myObject.filter((obj) => Object.keys(obj.languages).length);
-    // myObject.splice(8, myObject.length - 8);
+    myObject = myObject.filter((obj) => Object.keys(obj.languages).length);
+    myObject.splice(8, myObject.length - 8);
 
     myObject.forEach((item, i) => {
         const keys = Object.keys(item.languages);
