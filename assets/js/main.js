@@ -845,7 +845,9 @@ async function getGithubInformation(username) {
 
     if (response.message) throw response;
 
-    for (let i = 0; i < response.length; i++) {
+    const length = response.length > 9 ? 9 : length;
+
+    for (let i = 0; i < length; i++) {
         const repository = response[i];
         const repositoryObject = {};
 
