@@ -1,93 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Document</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="loader">
-      <div class="loader_inner"></div>
-      <p class="description"></p>
+        <div class="loader_inner"></div>
+        <p class="description"></p>
     </div>
     <div id="canvas"></div>
 
     <div class="home-page">
-      <div class="home-page-wrapper">
-        <div class="title"></div>
-        <button class="play-button">
+        <div class="home-page-wrapper">
+            <div class="title"></div>
+            <button class="play-button">
           <i class="fas fa-play-circle"></i>
           play
         </button>
-      </div>
+        </div>
     </div>
 
     <div class="ui">
-      <div class="noise"></div>
-      <div class="vig"></div>
-      <div class="bloom"></div>
-      <div class="fullscreen">
-        <i class="fa fa-expand"></i>
-      </div>
-      <div class="logo">
-        <h2>tolgaand repository's</h2>
-        <!-- <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/notEarthLogo.png"
-        /> -->
-      </div>
-      <div class="gems">
-        <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/gemsBg.png"
-        />
-      </div>
-      <p class="slide-status">0 / 0</p>
+        <div class="noise"></div>
+        <div class="vig"></div>
+        <div class="bloom"></div>
+        <div class="fullscreen">
+            <i class="fa fa-expand"></i>
+        </div>
+        <div class="logo"><span class="username"></span>'s repository</div>
 
-      <div class="left button">
-        <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/arrowBg.png"
-        />
-      </div>
-      <div class="right button">
-        <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/arrowBg.png"
-        />
-      </div>
-      <div class="box">
-        <div
-          class="box_inner"
-          data-deep-animate-time=".7"
-          data-deep-animate="false"
-          data-deep-ui="true"
-        >
-          <div class="box_inner__title" data-depth="20">Noob loot crate</div>
-          <div
-            class="feature x"
-            language-title="Javascript"
-            data-depth="10"
-          ></div>
-          <div
-            class="feature y"
-            language-title="Javascript"
-            data-depth="10"
-          ></div>
-          <div class="box_inner__text" data-depth="20"></div>
-          <div class="box_inner__cost" data-depth="31">
-            <i class="far fa-star"></i>
-            <span class="star-count">20</span>
-          </div>
-          <div class="box__buttons" data-depth="31">
-            <a class="github-button" href="#" target="_blank"
-              ><i class="fab fa-github"></i>View Github</a
+        <p class="slide-status">0 / 0</p>
+
+        <div class="left button">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/arrowBg.png" />
+        </div>
+        <div class="right button">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/arrowBg.png" />
+        </div>
+        <div class="box">
+            <div class="box_inner" data-deep-animate-time=".7" data-deep-animate="false" data-deep-ui="true">
+                <div class="box_inner__title" data-depth="20">Noob loot crate</div>
+                <div class="feature x" language-title="Javascript" data-depth="10"></div>
+                <div class="feature y" language-title="Javascript" data-depth="10"></div>
+                <div class="box_inner__text" data-depth="20"></div>
+                <div class="box_inner__cost" data-depth="31">
+                    <i class="far fa-star"></i>
+                    <span class="star-count">20</span>
+                </div>
+                <div class="box__buttons" data-depth="31">
+                    <a class="github-button" href="#" target="_blank"><i class="fab fa-github"></i>View Github</a
             >
             <a class="demo-button" href="" target="_blank"
               ><i class="far fa-eye"></i>View Demo</a
