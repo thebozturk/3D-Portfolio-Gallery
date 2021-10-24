@@ -676,7 +676,6 @@ async function threeJsInit() {
         startScene();
         animateScene();
     } catch (error) {
-        throw error;
         loading(error.message, 0, false);
     }
 }
